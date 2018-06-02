@@ -1,17 +1,13 @@
 {{ partial "header" . }}
-
 <main>
-
-    <div class="intro">
-
-        {{ with .Site.Params.profilePic }} <img class="profile" src="{{ . }}"> {{ end }}
-
-        <h1>{{ .Site.Title }}</h1>
-
-        <h2>{{ markdownify .Site.Params.Description }}</h2>
-
-    </div>
-
+<section id="info-pane" class="row text-center info">
+  {{ with .Site.Params.authorimage }} <img src="/img/{{ . }}" alt="Author Image" class="img-circle text-center headshot"> {{ end }}
+  <h1 class="author">{{ .Site.Params.author }}</h1>
+  {{ with .Site.Params.intro }}<h3 class="intro">{{ . | markdownify }}</h3>{{ end }}
+  {{ with .Site.Params.description }}<h4 class="description">{{ . | markdownify }}</h4>{{ end }}
+</section>
+<section id="main-menu-pane" class="row text-center main-menu">
+  {{ range sort .Site.Menus.social }}<h4><a class="menu-item" href="{{ .URL }}">{{ .Name | lower }}</a></h4>{{ end }}
+</section>
 </main>
-
 {{ partial "footer" . }}
