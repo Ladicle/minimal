@@ -17,14 +17,15 @@
 
     {{ end }}
 
-    {{ if and .Site.DisqusShortname (not .Params.disableComments) }}
-
-        <h4 class="page-header">Comments</h4>
-
-        {{ template "_internal/disqus.html" . }}
-
-    {{ end }}
-
+	{{- if and .Site.DisqusShortname (not .Params.disableComments) }}
+	<amp-iframe width=600 height=200
+			layout="responsive"
+			sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+			resizable
+			src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
+		<div overflow tabindex="0" role="button" aria-label="Read more"></div>
+	</amp-iframe>
+	{{ end -}}
 </main>
 
 {{ partial "footer.html" . }}
