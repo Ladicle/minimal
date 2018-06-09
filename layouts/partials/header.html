@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html amp>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,minimum-scale=1">
-        <title>{{ .Title }}</title>
-        <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-        {{ if .Site.GoogleAnalytics }}<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>{{ end }}
-        {{ if .Site.Params.favicon }}<link rel="icon" href="{{ .Site.Params.favicon | absURL }}">{{ end }}
-        <link rel="canonical" href="{{ .Permalink }}">
-        <link rel="alternate" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}" />
-        <link rel="feed" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}" />
-        <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-        <style amp-custom>{{ replaceRE " +" " " (replaceRE "\n" "" (partial "main.css" .)) | safeCSS }}</style>
-        {{ .Hugo.Generator }}
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>{{ .Title }}</title>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    {{ if .Params.gist }}<script async custom-element="amp-gist" src="https://cdn.ampproject.org/v0/amp-gist-0.1.js"></script>{{ end }}
+    <script custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js" async></script>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    {{- if .Page }}
+    <script async custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js"></script>
+    <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
+    {{ end -}}
+    {{ if .Site.GoogleAnalytics }}<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>{{ end }}
+    {{ if .Site.Params.favicon }}<link rel="icon" href="{{ .Site.Params.favicon | absURL }}">{{ end }}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@{{ .Site.Params.TwitterName }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:description" content="{{ .Description }}" />
+    <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail | default "img/avator.png" }}" />
+    <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="feed" href="{{ .RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="https://fonts.googleapis.com/css?family=Changa:700" rel="stylesheet">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>{{ replaceRE " +" " " (replaceRE "\n" "" (partial "main.css" .)) | safeCSS }}</style>
+    {{ .Hugo.Generator }}
+</head>
+<body>
+<div id="wrapper">
+<header class="headerbar fixed flex items-center top-0 left-0 right-0 px2">
+    <p class="mr-auto"><a class="logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
+    <nav role="main-navigation" class="pt3">
+        {{ $now := .URL }}
+        <ul>
+        {{ range sort .Site.Menus.main }}
+        {{ if eq .URL $now }}
+        <li class="nav-item current-nav-item">{{ .Name | upper }}</li>
+        {{ else }}
+        <li class="nav-item available-nav-item"><a class="main-menu" href="{{ .URL }}">{{ .Name | upper }}</a></li>
+        {{ end }}
+        {{ end }}
+        </ul>
+    </nav>
+    <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="nav-toggle">☰</div>
+</header>
+  <amp-sidebar id="header-sidebar" class="sidebar pr3 py1 md-hide lg-hide" layout="nodisplay">
+  <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="navbar-trigger pl1">✕</div>
+  <nav class="sidebar-nav list-reset m0">
+      <ul class="list-reset m0 py1">
+        {{ range sort .Site.Menus.main }}
+        {{ if eq .URL $now }}
+        <li class="sidebar-item current-sidebar-item pl1">{{ .Name }}</li>
+        {{ else }}
+        <li class="sidebar-item pl1"><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+        {{ end }}
+    </ul>
+  </nav>
+  </amp-sidebar>

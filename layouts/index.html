@@ -1,13 +1,46 @@
 {{ partial "header" . }}
-<main>
-<section id="info-pane" class="row text-center info">
-  {{ with .Site.Params.authorimage }} <img src="/img/{{ . }}" alt="Author Image" class="img-circle text-center headshot"> {{ end }}
-  <h1 class="author">{{ .Site.Params.author }}</h1>
-  {{ with .Site.Params.intro }}<h3 class="intro">{{ . | markdownify }}</h3>{{ end }}
-  {{ with .Site.Params.description }}<h4 class="description">{{ . | markdownify }}</h4>{{ end }}
+<main class="p2">
+<section class="center mx-auto info-pane">
+    <amp-img src="/img/{{ .Site.Params.authorimage }}" alt="Author Image" width="100" height="100" layout="responsive" class="circle index-avator"></amp-img>
+    <h1 class="author mb0 mt1">{{ .Site.Params.author }} </h1>
+    {{ with .Site.Params.intro }}<p class="intro m0 p0">{{ . | markdownify }}</p>{{ end }}
+    {{ with .Site.Params.description }}<p class="description m0 p0">{{ . | markdownify }}</p>{{ end }}
 </section>
-<section id="main-menu-pane" class="row text-center main-menu">
-  {{ range sort .Site.Menus.social }}<h4><a class="menu-item" href="{{ .URL }}">{{ .Name | lower }}</a></h4>{{ end }}
+<section class="main-menu py1 center">
+  <nav class="social-nav">
+    <ul class="social-nav-list list-reset">
+        {{ range sort .Site.Menus.social }}
+            <li class="link-button mb1"><a class="social-nav-item" href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+    </ul>
+  </nav>
+</section>
+<section class="activity-pane">
+    <h2 class="title-font"><a href="/about/">Recent Activities</a></h2>
+    <ul class="pb1 list-reset">
+    {{ range first 5 (where .Data.Pages.ByDate.Reverse "Section" "activity") }}
+        <li>
+            <time class="mr1 meta-time">{{ .Date.Format "Jan 2, 2006" }}</time>
+            {{ range .Params.tags }}<span class="activity-type">{{ . | upper }}</span>{{ end }}
+            <h4 class="mt1 activity-title"><a class="hoge" href="{{ .Params.link }}">{{ .Title }}</a></h4>
+        </li>
+    {{ end }}
+    </ul>
+</section>
+<section class="posts-pane pb3">
+    <h2 class="title-font"><a href="/post/">Recent Posts</a></h2>
+    {{ range first 5 (where .Data.Pages.ByDate.Reverse "Section" "post") }}
+    <div class="post-item">
+      <!-- https://picsum.photos/735/270/?random -->
+      <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="90" width="245"></amp-img></a>
+      <div class="post-info p2">
+         {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . |upper }}</a>{{ end }}
+         <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
+         <div class="meta-tags pt2">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
+         <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
+      </div>
+    </div>
+    {{ end }}
 </section>
 </main>
 {{ partial "footer" . }}

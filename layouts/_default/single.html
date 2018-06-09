@@ -1,22 +1,103 @@
 {{ partial "header" . }}
-{{ partial "nav" . }}
-<main>
-  {{ partial "list-item" . }}
-  <br> <div class="text-left">{{ .Content }}</div>
+<main id="top-page" class="px2 mb3">
+
+{{ if not .Params.disableMeta }}
+<div class="pt3 clearfix post-meta">
+  {{ with .Site.Params.authorimage }}<a href="/about/"><amp-img class="circle mr1 left" src="/img/{{ . }}" layout="fixed" height="60" width="60"></amp-img></a>{{ end }}
+
+  <span class="block">
+      <a class="meta-author" href="/about/" role="author">{{ .Site.Params.author }}</a>
+      <a class="follow-button" href="https://twitter.com/Ladicle">Follow</a>
+  </span>
+
+  <div class="meta-tags pt1 shortcut">
+  {{ $tn := (len .Params.tags) }}
+  This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if ne (add $index 1) $tn}}, {{end}}{{ end }}
+  and {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a>{{ end }}.
+  </div>
+  <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
+</div>
+{{ end }}
+
+{{ if not .Params.disableTitle }}
+<h1>{{ .Title }}</h1>
+{{ end }}
+
+<div class="article text-left">{{ .Content }}</div>
+
+{{ if not .Params.disableShare }}
+<div class="share-buttons right">
+    <ul class="list-reset flex">
+        <li><amp-social-share width="29" height="29" class="social-system social-icon" type="system"></amp-social-share></li>
+        <li><amp-social-share width="29" height="29" class="social-twitter social-icon" type="twitter"></amp-social-share></li>
+        <li><amp-social-share width="29" height="29" class="social-facebook social-icon" type="facebook"></amp-social-share></li>
+        <li><amp-social-share width="29" height="29" class="social-linkdin social-icon" type="linkedin"></amp-social-share></li>
+    </ul>
+</div>
+{{ end }}
+
   <!-- related posts with the same tags -->
   {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
   {{ if $related }}
       <h4 class="page-header">Related</h4>
       {{ range $related }} {{ partial "list-item" . }} {{ end }}
   {{ end }}
-	{{- if and .Site.DisqusShortname (not .Params.disableComments) }}
-	<amp-iframe width=600 height=200
-			layout="responsive"
-			sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
-			resizable
-			src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
-		<div overflow tabindex="0" role="button" aria-label="Read more"></div>
-	</amp-iframe>
-	{{ end -}}
+
+
+	    <!-- {{- if and .Site.DisqusShortname (not .Params.disableComment) }}
+	         <amp-iframe class="comment-box" width=600 height=200
+			     layout="responsive"
+			     sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+			     resizable
+			     src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
+		       <div overflow tabindex="0" role="button" aria-label="Read more"></div>
+	         </amp-iframe>
+	         {{ end -}} -->
+
 </main>
 {{ partial "footer.html" . }}
+
+<button id="scrollToTopButton" on="tap:top-page.scrollTo(duration=200)" class="scrollToTop">↑</button>
+<amp-animation id="showAnim" layout="nodisplay">
+  <script type="application/json">
+    {
+      "duration": "200ms",
+       "fill": "both",
+       "iterations": "1",
+       "direction": "alternate",
+       "animations": [
+         {
+           "selector": "#scrollToTopButton",
+           "keyframes": [
+             { "opacity": "1", "visibility": "visible" }
+           ]
+         }
+       ]
+    }
+  </script>
+</amp-animation>
+<amp-animation layout="nodisplay" id="hideAnim">
+ <script type="application/json">
+   {
+     "duration": "200ms",
+       "fill": "both",
+       "iterations": "1",
+       "direction": "alternate",
+       "animations": [
+         {
+           "selector": "#scrollToTopButton",
+           "keyframes": [
+             { "opacity": "0", "visibility": "hidden" }
+           ]
+         }
+       ]
+   }
+ </script>
+</amp-animation>
+
+<div id="marker">
+   <amp-position-observer
+      on="enter:hideAnim.start; exit:showAnim.start"
+      layout="nodisplay">
+   </amp-position-observer>
+</div>

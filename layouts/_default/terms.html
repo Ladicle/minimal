@@ -1,7 +1,11 @@
 {{ partial "header" . }}
-<main>
-    <h2>{{ .Title }}</h2>
-    {{ range (.Paginator 10).Pages }} {{ partial "list-item" . }} {{ end }}
+<main class="p2">
+    <h1>{{ .Title }}</h1>
+    <ul class="term-list">
+        {{ range (.Paginator 10).Pages }}
+        <li class="term"><a href="{{ .URL }}">{{ .Title }}</a></li>
+        {{ end }}
+    </ul>
 </main>
 {{ partial "paginator" . }}
 {{ partial "footer" . }}
