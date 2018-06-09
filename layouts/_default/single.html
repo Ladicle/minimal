@@ -12,7 +12,7 @@
 
   <div class="meta-tags pt1 shortcut">
   {{ $tn := (len .Params.tags) }}
-  This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if ne (add $index 1) $tn}}, {{end}}{{ end }}
+  This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm | lower }}</a>{{ if ne (add $index 1) $tn}}, {{end}}{{ end }}
   and {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a>{{ end }}.
   </div>
   <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
