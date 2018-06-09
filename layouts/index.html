@@ -21,7 +21,7 @@
     {{ range first 5 (where .Data.Pages.ByDate.Reverse "Section" "activity") }}
         <li>
             <time class="mr1 meta-time">{{ .Date.Format "Jan 2, 2006" }}</time>
-            {{ range .Params.tags }}<span class="activity-type">{{ . | upper }}</span>{{ end }}
+            <span class="activity-type">{{ .Params.activityType | upper }}</span>
             <h4 class="mt1 activity-title"><a class="hoge" href="{{ .Params.link }}">{{ .Title }}</a></h4>
         </li>
     {{ end }}
