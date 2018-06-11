@@ -23,36 +23,45 @@
 <h1>{{ .Title }}</h1>
 {{ end }}
 
-<div class="article text-left">{{ .Content }}</div>
+<div class="article text-left pb1">{{ .Content }}</div>
+
+<ul class="list-reset tags flex mb3">
+    {{ range .Params.tags }}
+    <li><a class="tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+</ul>
 
 {{ if not .Params.disableShare }}
-<div class="share-buttons right">
-    <ul class="list-reset flex">
-        <li><amp-social-share width="29" height="29" class="social-system social-icon" type="system"></amp-social-share></li>
-        <li><amp-social-share width="29" height="29" class="social-twitter social-icon" type="twitter"></amp-social-share></li>
-        <li><amp-social-share width="29" height="29" class="social-facebook social-icon" type="facebook"></amp-social-share></li>
-        <li><amp-social-share width="29" height="29" class="social-linkdin social-icon" type="linkedin"></amp-social-share></li>
+<div class="share-buttons clearfix py3 mt1">
+    <div class="share-icons right p0 m0">
+        <ul class="list-reset flex p0 m0">
+        <li><amp-img class="social-icon social-comment" src="/img/svg/dark/024-speech-bubble.svg" on="tap:AMP.setState({visible1: !visible1})" layout="fixed" height="23" width="23"></amp-img></li>
+        <li><amp-social-share width="23" height="23" class="social-system social-icon" type="system"></amp-social-share></li>
+        <li><amp-social-share width="23" height="23" class="social-twitter social-icon" type="twitter"></amp-social-share></li>
+        <li><amp-social-share width="23" height="23" class="social-facebook social-icon" type="facebook"></amp-social-share></li>
     </ul>
+    </div>
 </div>
 {{ end }}
 
-  <!-- related posts with the same tags -->
-  {{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
-  {{ if $related }}
-      <h4 class="page-header">Related</h4>
-      {{ range $related }} {{ partial "list-item" . }} {{ end }}
-  {{ end }}
+{{ $related := first 3 (where (where (where .Site.Pages.ByDate.Reverse ".Type" "==" "post") ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
+{{ if $related }}
+    <h4 class="page-header">Related</h4>
+    {{ range $related }} {{ partial "list-item" . }} {{ end }}
+{{ end }}
 
 
-	    <!-- {{- if and .Site.DisqusShortname (not .Params.disableComment) }}
-	         <amp-iframe class="comment-box" width=600 height=200
-			     layout="responsive"
-			     sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
-			     resizable
-			     src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
-		       <div overflow tabindex="0" role="button" aria-label="Read more"></div>
-	         </amp-iframe>
-	         {{ end -}} -->
+{{- if and .Site.DisqusShortname (and (not .Params.disableComment) (not .Params.disableShare)) }}
+<div [class]="visible1 ? 'box-show' : 'box-hide'" class="box-hide">
+  <amp-iframe class="comment-box" width=700 height=200
+	            layout="responsive"
+	            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+	            resizable
+	            src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
+      <div overflow tabindex="0" role="button" aria-label="Read more"></div>
+  </amp-iframe>
+</div>
+{{ end -}}
 
 </main>
 {{ partial "footer.html" . }}
