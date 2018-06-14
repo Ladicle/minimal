@@ -8,9 +8,11 @@
       <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="14" width="45"></amp-img></a>
       <div class="post-info p2">
          {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . |upper }}</a>{{ end }}
-         <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
+          <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
+          <div class="text-info">
          <div class="meta-tags pt2">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
          <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
+         </div>
       </div>
     </div>
     {{ end -}}

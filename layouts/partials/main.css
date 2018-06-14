@@ -30,6 +30,7 @@ main {
     margin: auto;
     flex: 1 0 auto;
     max-width: 700px;
+    width: 100%;
     color: var(--normal-text);
 }
 
@@ -1504,6 +1505,12 @@ a.follow-button {
     margin: 0.4em;
 }
 
+.post-item-small {
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 2px;
+    margin: 0.4em;
+}
+
 .activity-title a {
     color: rgba(0,0,0,.65);
 }
@@ -1597,4 +1604,37 @@ a.tag {
 
 a.tag:hover {
     color: rgba(0,0,0,.68);
+}
+
+.top-category {
+    font-size: .8rem;
+}
+
+.post-item-small div.post-info {
+    padding-top: 9px;
+}
+
+amp-img img {
+    object-fit: cover;
+}
+
+.post-item-small amp-img {
+    width: 110px;
+    height: 110px;
+    float: left;
+}
+
+@media screen and (max-width: 500px) {
+    .post-item-small amp-img {
+        float: none;
+        width: 100%;
+        height: 80px;
+    }
+    .post-item-small div.post-info {
+        padding: .9rem;
+    }
+}
+
+header.headerbar nav {
+    overflow: hidden;
 }
