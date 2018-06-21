@@ -1,6 +1,5 @@
 {{ partial "header" . }}
 <main id="top-page" class="px2 mb3">
-
 {{ if not .Params.disableMeta }}
 <div class="pt3 clearfix post-meta">
   {{ with .Site.Params.authorimage }}<a href="/about/"><amp-img class="circle mr1 left" src="/img/{{ . }}" layout="fixed" height="60" width="60"></amp-img></a>{{ end }}
@@ -34,6 +33,7 @@
 </ul>
 
 {{ if not .Params.disableShare }}
+
 <div class="share-buttons clearfix py3 mt1">
     <div class="share-icons right p0 m0">
         <ul class="list-reset flex p0 m0">
@@ -55,13 +55,13 @@
 
 {{- if and .Site.DisqusShortname (and (not .Params.disableComment) (not .Params.disableShare)) }}
 <div [class]="visible1 ? 'box-show' : 'box-hide'" class="box-hide">
-  <amp-iframe class="comment-box" width=700 height=200
-	            layout="responsive"
-	            sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
-	            resizable
-	            src="{{ .Site.Params.disqusThreadURL }}?shortname={{ .Site.DisqusShortname }}&url={{ .Permalink | htmlEscape }}">
-      <div overflow tabindex="0" role="button" aria-label="Read more"></div>
-  </amp-iframe>
+    <amp-iframe class="comment-box" width=600 height=140
+	              layout="responsive"
+	              sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+	              resizable
+	              src="{{ .Site.Params.disqusThreadURL }}#{{ .Permalink | htmlEscape }}">
+        <div overflow tabindex="0" role="button" aria-label="Read more"></div>
+    </amp-iframe>
 </div>
 {{ end -}}
 

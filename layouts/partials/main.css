@@ -1442,6 +1442,9 @@ header .show {
     justify-content: center;
     overflow-y: hidden;
     max-width: 400px;
+}
+
+main .social-nav-list {
     margin: 1rem auto;
     height: 2.8rem;
 }
