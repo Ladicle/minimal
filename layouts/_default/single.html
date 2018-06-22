@@ -1,7 +1,7 @@
 {{ partial "header" . }}
-<main id="top-page" class="px2 mb3">
+<main class="px2 mb3">
 {{ if not .Params.disableMeta }}
-<div class="pt3 clearfix post-meta">
+<div class="clearfix post-meta single-post-meta">
   {{ with .Site.Params.authorimage }}<a href="/about/"><amp-img class="circle mr1 left" src="/img/{{ . }}" layout="fixed" height="60" width="60"></amp-img></a>{{ end }}
 
   <span class="block">
@@ -20,11 +20,13 @@
 </div>
 {{ end }}
 
+<div class="post-main">
 {{ if not .Params.disableTitle }}
 <h1>{{ .Title }}</h1>
 {{ end }}
 
-<div class="article text-left pb1">{{ .Content }}</div>
+<div class="article text-left pb4">{{ .Content }}</div>
+</div>
 
 <ul class="list-reset tags flex mb3">
     {{ range .Params.tags }}
@@ -68,7 +70,9 @@
 </main>
 {{ partial "footer.html" . }}
 
-<button id="scrollToTopButton" on="tap:top-page.scrollTo(duration=200)" class="scrollToTop">↑</button>
+<button id="scrollToTopButton" on="tap:top-page.scrollTo(duration=200)" class="scrollToTop">
+    <amp-img src="/img/svg/light/006-up-arrow.svg" layout="fixed" height="26" width="26"></amp-img>
+</button>
 <amp-animation id="showAnim" layout="nodisplay">
   <script type="application/json">
     {
