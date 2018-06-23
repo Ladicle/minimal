@@ -27,7 +27,7 @@
     {{ end }}
     </ul>
 </section>
-<section class="posts-pane pb3">
+<section class="posts-pane">
     <h2 class="title-font"><a href="/post/">Recent Posts</a></h2>
     {{ range first 5 (where .Data.Pages.ByDate.Reverse "Section" "post") }}
     <div class="post-item-small clearfix">

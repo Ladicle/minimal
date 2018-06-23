@@ -10,7 +10,7 @@
 
 html, body {
     height: 100%;
-    font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
     color: #777;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
@@ -36,7 +36,7 @@ main {
 
 h1,h2,h3,h4,h5,h6 {
     color: var(--header-text);
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
 a {
@@ -1276,7 +1276,7 @@ sup {
   border-bottom: 1px rgba(0,0,0,.15);
   box-shadow: 0 2px 2px -2px rgba(0,0,0,.35);
   max-height: 3rem;
-  font-family: medium-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
 }
 
 .nav-item, .nav-item a {
@@ -1347,11 +1347,16 @@ sup {
     line-height: 1.5rem;
 }
 
-blockquote {
+.post-main blockquote {
     margin: 0;
-    padding-left: 0.5rem;
-    border: none;
-    border-left: 4px solid var(--light-text);
+    border-left: 4px solid #8d8d8d85;
+    padding: .35em 1em;
+    line-height: 1.35;
+}
+
+.post-main blockquote p {
+    margin: 0;
+    padding: 0;
 }
 
 footer,.small-text {
@@ -1418,7 +1423,7 @@ header .show {
 }
 
 .info-pane {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     max-width: 20em;
 }
 
@@ -1434,7 +1439,7 @@ header .show {
 }
 
 .link-button a {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-weight: 400;
     color: var(--light-text);
 }
@@ -1466,12 +1471,12 @@ main .social-nav-list {
 }
 
 footer .social-nav-list li {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-weight: 400;
 }
 
 .title-font {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
 }
 
 .title-font a {
@@ -1479,7 +1484,7 @@ footer .social-nav-list li {
 }
 
 .list-index {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     letter-spacing: 0;
     font-weight: 400;
     color: rgba(0,0,0,.15);
@@ -1505,7 +1510,7 @@ time.meta-time, div.meta-tags {
 }
 
 a.follow-button {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-weight: 400;
     color: var(--accent);
     border: 1px solid var(--accent);
@@ -1541,7 +1546,7 @@ a.follow-button {
 }
 
 .activity-type {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-weight: 400;
     font-size: .8rem;
     line-height: .8rem;
@@ -1620,7 +1625,7 @@ amp-social-share.social-facebook {
 }
 
 a.tag {
-    font-family: medium-content-sans-serif-font,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: .8rem;
@@ -1690,24 +1695,44 @@ header.headerbar nav {
 }
 
 .post-main ul, .post-main ol {
-    padding-left: 1em;
+    margin: .25em 0;
+    padding: .25em;
+    list-style: none;
 }
-
-.post-main ul {
+.article>ul, .article>ol {
+    padding-left: .5em;
     margin: 1em 0 0 0;
 }
 
 .post-main ol {
-    margin: 1em 0 0 .2em;
+    counter-reset: number;
 }
 
-.post-main li:before {
+.post-main ul li:before, .post-main ol li:before {
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
     font-weight: bold;
+    margin-left: -1.5em;
+    width: 1em;
+}
+
+.post-main ol li:before {
+    margin-left: -1.7em;
+}
+
+.post-main ul li:before {
+    content: '\2022';
+}
+
+.post-main ol li:before {
+    counter-increment: number;
+    content: counter(number)".";
 }
 
 .post-main li {
+    margin-left: 1.5em;
     line-height: 1.73em;
-    padding-left: .35em;
 }
 
 .post-main hr {
@@ -1725,7 +1750,7 @@ header.headerbar nav {
     color: rgba(0,0,0,.52);
     letter-spacing: 14.7px;
     position: relative;
-    top: -25px;
+    top: -30px;
     font-size: 30px;
 }
 
@@ -1739,12 +1764,12 @@ header.headerbar nav {
 }
 
 .footnotes {
-    margin-top: 4em;
+    margin-top: 2.4em;
 }
 
 .footnotes ol {
     font-size: .8em;
-    margin: 1em 0;
+    margin: 1em 0 0 0;
 }
 
 .footnotes a {
