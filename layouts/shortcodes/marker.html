@@ -1,1 +1,1 @@
-<span class="marker">{{ .Inner }}</span>
+<span class="marker {{ if .Get "class" }}{{ .Get "class" }}{{ end }}">{{ .Inner }}</span>
