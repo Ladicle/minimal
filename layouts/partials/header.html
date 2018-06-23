@@ -48,7 +48,7 @@
     <div id="wrapper">
         <div id="top-page" ></div>
     <header class="headerbar fixed flex items-center top-0 left-0 right-0 px2">
-    <p class="mr-auto"><a class="logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
+    <p class="logo-wrap mr-auto"><a class="logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
     <nav role="main-navigation" class="pt3">
         <ul>
         {{ range sort .Site.Menus.main }}
@@ -60,5 +60,7 @@
         {{ end }}
         </ul>
     </nav>
-    <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="nav-toggle">☰</div>
+    <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="nav-toggle">
+        <amp-img src="/img/svg/light/022-menu.svg" layout="fixed" height="23" width="23"></amp-img>
+    </div>
 </header>

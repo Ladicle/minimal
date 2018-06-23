@@ -1283,7 +1283,10 @@ sup {
     color: var(--light-text);
     text-decoration: none;
     font-size: .9rem;
-    line-height: 2.5rem;
+    padding-top: 5px;
+    line-height: 2.1rem;
+    width: 62px;
+    text-align: center;
 }
 
 .current-nav-item {
@@ -1326,6 +1329,10 @@ sup {
 
 .nav-toggle, .available-nav-item {
     cursor: pointer;
+}
+
+.nav-toggle {
+    margin-top: 5px;
 }
 
 .navbar-trigger {
@@ -1374,6 +1381,10 @@ footer {
     margin-top: auto;
     background-color: var(--accent-background);
     color: #000;
+}
+
+p.logo-wrap {
+    margin-top: 18px;
 }
 
 a.logo {
@@ -1783,4 +1794,8 @@ header.headerbar nav {
 
 .emt1 {
     margin-top: 1em;
+}
+
+.list-page h1 {
+    margin: .25em 0 0 0;
 }
