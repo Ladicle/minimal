@@ -3,6 +3,8 @@ title: "{{ replace .TranslationBaseName "-" " " | title }}"
 date: {{ dateFormat "2006-01-02" .Date }}
 tags: []
 categories: []
-draft: true
 lang: "jp"
+draft: false
+twitter: false
+gist: false
 ---
