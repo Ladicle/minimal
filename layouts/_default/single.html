@@ -29,6 +29,9 @@
 </div>
 
 <ul class="list-reset tags flex mb3">
+    {{ range .Params.categories }}
+    <li><a class="tag" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
     {{ range .Params.tags }}
     <li><a class="tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a></li>
     {{ end }}
@@ -46,6 +49,18 @@
     </div>
 </div>
 {{ end }}
+
+{{- if and .Site.DisqusShortname (and (not .Params.disableComment) (not .Params.disableShare)) }}
+<div [class]="visible1 ? 'box-show' : 'box-hide'" class="box-hide">
+    <amp-iframe class="comments" width=600 height=140
+	              layout="responsive"
+	              sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+	              resizable
+	              src="https://ladicle.com/amp-iframe/disqus_thread.html#{{ .Permalink | htmlEscape }}">
+        <div overflow tabindex="0" role="button" aria-label="Read more"></div>
+    </amp-iframe>
+</div>
+{{ end -}}
 
 {{ $related := .Site.RegularPages.Related . | first 6 }}
 {{ with $related }}
@@ -71,18 +86,6 @@
 </div>
 </div>
 {{ end }}
-
-{{- if and .Site.DisqusShortname (and (not .Params.disableComment) (not .Params.disableShare)) }}
-<div [class]="visible1 ? 'box-show' : 'box-hide'" class="box-hide">
-    <amp-iframe class="comment-box" width=600 height=140
-	              layout="responsive"
-	              sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
-	              resizable
-	              src="{{ .Site.Params.disqusThreadURL }}#{{ .Permalink | htmlEscape }}">
-        <div overflow tabindex="0" role="button" aria-label="Read more"></div>
-    </amp-iframe>
-</div>
-{{ end -}}
 
 </main>
 {{ partial "footer.html" . }}

@@ -2,7 +2,7 @@
 <main class="px2 list-page">
     <h1>{{ .Title }}</h1>
     <div class="item-box">
-    {{- range (.Paginator 5).Pages }}
+    {{- range (.Paginator 10).Pages }}
     <div class="post-item">
       <!-- https://picsum.photos/735/270/?random -->
       <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="14" width="45"></amp-img></a>
