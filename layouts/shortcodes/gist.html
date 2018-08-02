@@ -1,5 +1,7 @@
 <amp-gist
-data-gistid="{{ .Get "id" }}"
+    data-gistid="{{ .Get "id" }}"
     layout="fixed-height"
-    height="{{ .Get "h" | default 200 }}">
+    data-file="{{ .Get "name" | default "" }}"
+    height="{{ .Get "h" | default 200 }}"
+    class="mt1 mb2">
 </amp-gist>
