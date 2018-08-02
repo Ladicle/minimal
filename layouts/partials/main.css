@@ -35,7 +35,7 @@ main {
 }
 
 main.list-page {
-    max-width: 1800px;
+    max-width: 1315px;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -1708,8 +1708,7 @@ header.headerbar nav {
 }
 
 .post-main h2 {
-    margin: 1.5em 0 .72em 0;
-}
+    margin: 1.5em 0 .72em }
 
 .post-main h3 {
     margin: 1.3em 0 0 0;

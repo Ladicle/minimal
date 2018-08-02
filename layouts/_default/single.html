@@ -66,7 +66,8 @@
 </div>
 {{ end -}}
 
-{{ $related := .Site.RegularPages.Related . | first 6 }}
+{{ if not .Params.disableRelated }}
+{{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
 <div class="related-posts">
 <h3>READ NEXT</h3>
@@ -89,6 +90,7 @@
 {{ end }}
 </div>
 </div>
+{{ end }}
 {{ end }}
 
 </main>
