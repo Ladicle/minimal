@@ -10,7 +10,7 @@
 
 html, body {
     height: 100%;
-    font-family:  "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-family:  'ヒラギノ角ゴ ProN W3', "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
     color: #777;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
@@ -20,6 +20,58 @@ html, body {
 
 body {
     margin: 0;
+}
+
+.post-main h1, 
+.post-main h2, 
+.post-main h3, 
+.post-main h4, 
+.post-main h5, 
+.post-main h6 {
+    color: #111;
+    line-height: 125%;
+    margin-top: 2em;
+    font-weight: normal;
+}
+
+.post-main h1 { font-size: 2.5em; margin-top: 1em; }
+.post-main h2 { font-size: 2em; }
+.post-main h3 { font-size: 1.5em; }
+
+.h1 {
+    font-size: 3rem;
+}
+
+.h2 {
+    font-size: 2rem;
+}
+
+.h3 {
+    font-size: 1.5rem;
+}
+
+.h4 {
+  font-size: 1.125rem
+}
+
+.h5 {
+  font-size: .875rem
+}
+
+.h6 {
+  font-size: .75rem
+}
+
+.post-main h1 {
+    margin: 1.1em 0 .72em 0;
+}
+
+.post-main h2 {
+    margin: 1.5em 0 .72em 
+}
+
+.post-main h3 {
+    margin: 1.3em 0 0 0;
 }
 
 figcaption,figure,main,article,aside,footer,header,nav,section {
@@ -40,7 +92,7 @@ main.list-page {
 
 h1,h2,h3,h4,h5,h6 {
     color: var(--header-text);
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    font-family: 'ヒラギノ角ゴ ProN W3', arial, -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
 a {
@@ -101,6 +153,7 @@ figcaption,figure,main {
 }
 
 figure {
+    text-align: center;
     margin: 1em 40px
 }
 
@@ -124,30 +177,6 @@ sub {
 
 sup {
     top: -.5em
-}
-
-.h1 {
-    font-size: 3rem;
-}
-
-.h2 {
-    font-size: 2rem;
-}
-
-.h3 {
-    font-size: 1.5rem;
-}
-
-.h4 {
-  font-size: 1.125rem
-}
-
-.h5 {
-  font-size: .875rem
-}
-
-.h6 {
-  font-size: .75rem
 }
 
 .font-family-inherit {
@@ -1363,18 +1392,6 @@ sup {
     line-height: 1.5rem;
 }
 
-.post-main blockquote {
-    margin: 0;
-    border-left: 4px solid #8d8d8d85;
-    padding: .35em 1em;
-    line-height: 1.35;
-}
-
-.post-main blockquote p {
-    margin: 0;
-    padding: 0;
-}
-
 footer,.small-text {
     font-size: .75rem;
     line-height: 1rem;
@@ -1496,11 +1513,12 @@ footer .social-nav-list li {
 }
 
 .title-font {
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
 .title-font a {
     color: var(--header-text);
+    text-decoration: underline;
 }
 
 .list-index {
@@ -1508,6 +1526,10 @@ footer .social-nav-list li {
     letter-spacing: 0;
     font-weight: 400;
     color: rgba(0,0,0,.15);
+}
+
+h1.author {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
 }
 
 a.meta-author {
@@ -1541,18 +1563,29 @@ a.follow-button {
     padding: .05rem .6rem;
 }
 
+.related-posts>h3 {
+    /* font-size: 2em; */
+    margin: 1.5em 0 .72em;
+    line-height: 1.5;
+    font-family: 'ヒラギノ角ゴ ProN W3', "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+    font-weight: normal;
+}
+
 .item-box {
     display: flex;
     flex-wrap: wrap-reverse;
     flex-direction: row-reverse;
     margin: 0 0 2em;
+    align-content: space-between;
+    margin-top: -0.4em;
 }
 
 .post-item {
     border: 1px solid rgba(0,0,0,.1);
     border-radius: 2px;
     flex: 1 0 320px;
-    margin: 0.4em;
+    margin: 0.4em 0;
+    margin-right: 11px;
 }
 
 .post-item-small {
@@ -1665,10 +1698,6 @@ a.tag:hover {
     padding-top: 9px;
 }
 
-amp-img img {
-    object-fit: cover;
-}
-
 .post-item-small amp-img {
     width: 110px;
     height: 110px;
@@ -1697,21 +1726,6 @@ header.headerbar nav {
 .post-main p {
     line-height: 1.57em;
     margin: 1em 0 0 0;
-}
-
-.post-main h1, .post-main h2, .post-main h3, .post-main h4, .post-main h5 {
-    line-height: 1.1em;
-}
-
-.post-main h1 {
-    margin: 1.1em 0 .72em 0;
-}
-
-.post-main h2 {
-    margin: 1.5em 0 .72em }
-
-.post-main h3 {
-    margin: 1.3em 0 0 0;
 }
 
 .post-main ul, .post-main ol {
@@ -1807,4 +1821,393 @@ header.headerbar nav {
 
 .list-page h1 {
     margin: .25em 0 0 0;
+}
+
+blockquote {
+    font-family: elevate-display-font,medium-marketing-display-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    font-size: 1.2em;
+    line-height: 1.4;
+    position: relative;
+    margin: 1.5em 0;
+    background: transparent;
+    border: none;
+    border-left: 5px solid #f0f0f0;
+    padding: .1em 2rem .2em 2.5rem;
+    /* text-align: center; */
+}
+
+blockquote cite {
+    text-decoration: underline;
+    font-size: .8em;
+    float: right;
+    position: relative;
+    top: -20px;
+}
+
+blockquote:before,
+blockquote:after {
+    position: absolute;
+    color: #f2f2f2;
+    font-size: 8rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+}
+
+blockquote:before {
+    content: '“';
+    left: 1rem;
+    top: -2.5rem;
+}
+
+table {
+    margin: 0 auto;
+    margin-bottom: 1em;
+    border-collapse: collapse;
+}
+
+table code {
+    background: transparent;
+}
+
+td, th {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: .5em 1em;
+}
+
+table th {
+    /* font-weight: normal; */
+    background: #f8f8f8;
+}
+
+tr:nth-child(even) {
+    background: transparent;
+}
+
+.task-list {
+    list-style: none;
+    padding-inline-start: 17px;
+}
+
+.post-main .task-list li {
+    margin-left: -5px;
+}
+
+.post-main .task-list li:before {
+    content: '';
+}
+
+.task-list .task-list-item {
+    position: relative;
+    margin: 0 .9rem 0 0;
+}
+
+.task-list .task-list-item:disabled {
+    cursor: not-allowed;
+}
+
+.task-list .task-list-item:before {
+    position: absolute;
+    z-index: 1;
+    top: 0.19rem;
+    left: 0.17rem;
+    width: 0.75rem;
+    height: 0.375rem;
+    content: '';
+    transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+    transform: rotate(-45deg) scale(0, 0);
+    border: 2px solid var(--accent);
+    border-top-style: none;
+    border-right-style: none;
+}
+
+.task-list .task-list-item:checked:before {
+    transform: rotate(-45deg) scale(1, 1);
+}
+
+.task-list .task-list-item:after {
+    position: absolute;
+    top: -.01rem;
+    left: .001rem;
+    width: 1rem;
+    height: 1rem;
+    content: '';
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    background: #ffffff;
+}
+
+.src-block-caption {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+figcaption p {
+    margin: 0;
+}
+
+.table-caption {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: .5em
+}
+
+.table-caption + p {
+    display: none;
+}
+
+.ox-hugo-toc a {
+    border: none;
+}
+
+.ox-hugo-toc .heading {
+    display: none;
+}
+
+.ox-hugo-toc ul {
+    margin: 0;
+    padding: 0;
+}
+
+.ox-hugo-toc ul ul {
+    padding-left: 2.15em;
+}
+
+.ox-hugo-toc ul ul ul {
+    padding-left: 2.85em;
+}
+
+.ox-hugo-toc>ul {
+    padding-left: 40px;
+    margin-bottom: 0;
+}
+
+.ox-hugo-toc>ul li:before, .task-list li:before {
+    content: '';
+    margin-right: 0;
+}
+
+.ox-hugo-toc .section-num {
+    margin-left: -1em;
+    margin-right: .5em;
+    color: #505050;
+}
+
+.ox-hugo-toc .org-todo {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    color: #aaa;
+    font-size: .7em;
+    font-weight: normal;
+    padding: 3px 5px;
+    margin: 0;
+    border-radius: 2px;
+}
+
+p code, div.src-block-caption code {
+    background: #f8f8f8;
+    border-radius: 3px;
+    font-size: 85%;
+    padding: .2em .4em;
+    margin: 0;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+pre {
+    border-radius: 3px;
+    margin-bottom: .5em;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin-top: 2.3em;
+    position: relative;
+    overflow: visible;
+    padding: 1.9em 2em 1.55em 2em;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+}
+
+code {
+    word-break: break-word;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+div.highlight > pre > code:before {
+  display: inline;
+  position: absolute;
+  color: #808080;
+  background-color: white;
+  top: -10px;
+  left: 10px;
+  padding: 0px 4px;
+  border: 1px solid #d0d0d0;
+  font-size: 80%;
+  content: 'hoge';
+}
+
+div.highlight > pre .language-org:before { content: 'Org mode'; }
+div.highlight > pre .language-text:before { content: 'Text'; }
+div.highlight > pre .language-ascii:before { content: 'ASCII'; }
+div.highlight > pre .language-gitignore:before { content: '.gitignore'; }
+div.highlight > pre .language-dockerignore:before { content: '.dockerignore'; }
+div.highlight > pre .language-asymptote:before { content: 'Asymptote'; }
+div.highlight > pre .language-awk:before { content: 'Awk'; }
+div.highlight > pre .language-c:before { content: 'C'; }
+div.highlight > pre .language-yaml:before { content: 'YAML'; }
+div.highlight > pre .language-toml:before { content: 'TOML'; }
+div.highlight > pre .language-json:before { content: 'JSON'; }
+div.highlight > pre .language-clojure:before { content: 'Clojure'; }
+div.highlight > pre .language-css:before { content: 'CSS'; }
+div.highlight > pre .language-d:before { content: 'D'; }
+div.highlight > pre .language-go:before { content: 'Go'; }
+div.highlight > pre .language-dockerfile:before { content: 'Dockerfile'; }
+div.highlight > pre .language-diff:before { content: 'Diff'; }
+div.highlight > pre .language-ditaa:before { content: 'ditaa'; }
+div.highlight > pre .language-dot:before { content: 'Graphviz'; }
+div.highlight > pre .language-emacs-lisp:before { content: 'Emacs Lisp'; }
+div.highlight > pre .language-elisp:before { content: 'Emacs Lisp'; }
+div.highlight > pre .language-gnuplot:before { content: 'gnuplot'; }
+div.highlight > pre .language-haskell:before { content: 'Haskell'; }
+div.highlight > pre .language-java:before { content: 'Java'; }
+div.highlight > pre .language-js:before { content: 'Javascript'; }
+div.highlight > pre .language-javascript:before { content: 'Javascript'; }
+div.highlight > pre .language-latex:before { content: 'LaTeX'; }
+div.highlight > pre .language-lisp:before { content: 'Lisp'; }
+div.highlight > pre .language-lua:before { content: 'Lua'; }
+div.highlight > pre .language-matlab:before { content: 'MATLAB'; }
+div.highlight > pre .language-plantuml:before { content: 'Plantuml'; }
+div.highlight > pre .language-python:before { content: 'Python'; }
+div.highlight > pre .language-R:before { content: 'R'; }
+div.highlight > pre .language-ruby:before { content: 'Ruby'; }
+div.highlight > pre .language-sass:before { content: 'Sass'; }
+div.highlight > pre .language-scheme:before { content: 'Scheme'; }
+div.highlight > pre .language-sed:before { content: 'Sed'; }
+div.highlight > pre .language-sh:before { content: 'shell'; }
+div.highlight > pre .language-sql:before { content: 'SQL'; }
+div.highlight > pre .language-rust:before { content: 'Rust'; }
+div.highlight > pre .language-sqlite:before { content: 'SQLite'; }
+div.highlight > pre .language-io:before { content: 'IO'; }
+div.highlight > pre .language-makefile:before { content: 'Makefile'; }
+div.highlight > pre .language-perl:before { content: 'Perl'; }
+div.highlight > pre .language-scala:before { content: 'Scala'; }
+div.highlight > pre .language-shell:before { content: 'Shell Script'; }
+div.highlight > pre .language-cpp:before  { content: 'C++'; }
+div.highlight > pre .language-coq:before  { content: 'Coq'; }
+div.highlight > pre .language-groovy:before  { content: 'Groovy'; }
+div.highlight > pre .language-bash:before  { content: 'Bash'; }
+div.highlight > pre .language-fish:before  { content: 'Fish'; }
+div.highlight > pre .language-asm:before { content: 'Assembler'; }
+div.highlight > pre .language-caml:before { content: 'Caml'; }
+div.highlight > pre .language-html:before { content: 'HTML'; }
+div.highlight > pre .language-idl:before { content: 'IDL'; }
+div.highlight > pre .language-verilog:before { content: 'Verilog'; }
+div.highlight > pre .language-vhdl:before { content: 'VHDL'; }
+div.highlight > pre .language-xml:before { content: 'XML'; }
+div.highlight > pre .language-conf:before { content: 'Configuration File'; }
+
+.underline {
+    background-color: transparent;
+    background-image: linear-gradient(to bottom,rgba(242, 162, 12, 0.2),rgba(242, 139, 12, 0.2));
+    text-decoration: none;
+}
+
+.NOTE, .INFO, .ALERT, .TIP {
+    border-radius: 15px;
+    margin: 2em 0;
+    padding: .5em 1em;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    background: #f8f8f8;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+
+.NOTE:before, .INFO:before, .ALERT:before, .TIP:before {
+    font-weight: bold;
+}
+
+.TIP:before {
+    content: "TIP";
+}
+
+.NOTE:before {
+    content: "NOTE";
+} 
+
+.INFO:before {
+    content: "INFO";
+} 
+
+.ALERT:before {
+    content: "ALERT";
+}
+
+span.org-todo {
+    position: relative;
+    top: -2.5px;
+    font-size: .6em;
+    border-radius: 3px;
+    padding: 5px 8px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: .3em;
+    background: #aaa;
+} 
+
+span.DONE, span.Done, span.Close {
+    background: #D35B57;
+}
+
+span.TODO, span.Todo, span.Open {
+    background: #64BE79;
+}
+
+span.DOING, span.Doing {
+    background: #efcf1a;
+}
+
+h2 code, h1 code, h3 code, h4 code, h5 code, h6 code {
+    color: #aaa;
+}
+
+.posts-pane amp-img img {
+    object-fit: cover;
+}
+
+.references a {
+    border-bottom: none;
+    margin-left: 1em;
+}
+
+.references ol {
+    padding: 0;
+}
+
+.references ol li {
+    list-style-type:none;
+    counter-increment: cnt;
+    margin-left: 1em;
+}
+
+.references ol li:before {
+    color: #505050;
+    display: marker;
+    content: "［" counter(cnt) "］";
+    font-weight: normal;
+}
+
+dl {
+    margin: 0;
+    padding: 0;
+    font-family: elevate-display-font,medium-marketing-display-font,Georgia,Cambria,"Times New Roman",Times,serif;
+}
+
+dt {
+    position: relative;
+    left: 0;
+    top: 1.2em;
+    width: 5em;
+    font-weight: bold;
+}
+
+dd {
+    border-left: 1px solid rgba(0, 0, 0, 0.125);
+    margin: 0 0 0 6em;
+    padding: 0 0 .5em 1em;
 }

@@ -70,12 +70,12 @@
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
 <div class="related-posts">
-<h3>READ NEXT</h3>
+<h3>READ NEXT...</h3>
 <div class="item-box">
     {{ range . }}
     <div class="post-item">
       <!-- https://picsum.photos/735/270/?random -->
-      <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="14" width="45"></amp-img></a>
+      <!-- <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="14" width="45"></amp-img></a> -->
       <div class="post-info p2">
          {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . |upper }}</a>{{ end }}
           <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>

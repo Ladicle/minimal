@@ -1,0 +1,6 @@
+<figure{{ if .Get "class" }} class="{{ .Get "class" }}"{{ end }}>
+<amp-img src="{{ $.Site.BaseURL }}{{ .Get "src" }}" alt="{{ .Page.Title }}" height={{ .Get "height" | default "400" }} width={{ .Get "width" | default "640"}}></amp-img>
+{{ if .Get "caption" }}
+<figcaption>{{ .Get "caption" }}</figcaption>
+{{ end }}
+</figure>

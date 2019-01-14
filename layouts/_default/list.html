@@ -5,7 +5,7 @@
     {{- range sort (.Paginator 20).Pages ".Date" "asc" }}
     <div class="post-item">
       <!-- https://picsum.photos/735/270/?random -->
-      <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="8" width="45"></amp-img></a>
+      <!-- <a href="{{ .URL }}"><amp-img class="thmbl" src="/img/picsum/picsum-{{ index (seq 45 | shuffle) 0 }}.jpg" layout="responsive" height="8" width="45"></amp-img></a> -->
       <div class="post-info p2">
          {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . |upper }}</a>{{ end }}
           <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
