@@ -24,6 +24,7 @@ html, body {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     background: #fefefe;
+    font-size: 98%;
 }
 
 body {
@@ -1761,7 +1762,7 @@ header.headerbar nav {
 }
 
 .post-main ul, .post-main ol {
-    margin: .25em 0;
+    /* margin: .25em 0; */
     padding: .25em;
     list-style: none;
 }
@@ -1798,7 +1799,7 @@ header.headerbar nav {
 
 .post-main li {
     margin-left: 1.5em;
-    line-height: 1.73em;
+    line-height: 1.6em;
 }
 
 .post-main hr {
@@ -1991,6 +1992,15 @@ figcaption p {
     border: none;
 }
 
+.post-main .ox-hugo-toc {
+    font-size: 90%;
+}
+
+.post-main .ox-hugo-toc li {
+    margin-left: .5em;
+    line-height: 1.52em;
+}
+
 .ox-hugo-toc .heading {
     display: none;
 }
@@ -2001,11 +2011,11 @@ figcaption p {
 }
 
 .ox-hugo-toc ul ul {
-    padding-left: 2.15em;
+    padding-left: 1.5em;
 }
 
 .ox-hugo-toc ul ul ul {
-    padding-left: 2.85em;
+    padding-left: 2em;
 }
 
 .ox-hugo-toc>ul {
@@ -2019,7 +2029,6 @@ figcaption p {
 }
 
 .ox-hugo-toc .section-num {
-    margin-left: -1em;
     margin-right: .5em;
     color: #505050;
 }
@@ -2225,21 +2234,22 @@ h2 code, h1 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 dl {
-    margin: 0;
     padding: 0;
+    margin: 0;
+    margin-top: -1em;
     font-family: elevate-display-font,medium-marketing-display-font,Georgia,Cambria,"Times New Roman",Times,serif;
 }
 
 dt {
     position: relative;
     left: 0;
-    top: 1.2em;
+    top: 1.28em;
     width: 5em;
     font-weight: bold;
 }
 
 dd {
     border-left: 1px solid rgba(0, 0, 0, 0.18);
-    margin: 0 0 0 6em;
-    padding: 0 0 .5em 1em;
+    margin: 0 0 0 4.8em;
+    padding: 0 0 .2em 1em;
 }
