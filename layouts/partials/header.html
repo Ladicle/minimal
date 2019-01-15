@@ -64,36 +64,36 @@
 </head>
 <body>
     {{ $now := .URL }}
-    <amp-sidebar id="header-sidebar" class="sidebar pr3 py1 md-hide lg-hide" layout="nodisplay">
-        <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="navbar-trigger pl1">✕</div>
-        <nav class="sidebar-nav list-reset m0">
-            <ul class="list-reset m0 py1">
+    <amp-sidebar id="header-sidebar" class="sidebar pr3 py1 md-hide lg-hide no_print" layout="nodisplay">
+        <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="navbar-trigger pl1 no_print">✕</div>
+        <nav class="sidebar-nav list-reset m0 no_print">
+            <ul class="list-reset m0 py1 no_print">
                 {{ range sort .Site.Menus.main }}
                 {{ if eq .URL $now }}
-                <li class="sidebar-item current-sidebar-item pl1">{{ .Name }}</li>
+                <li class="sidebar-item current-sidebar-item pl1 no_print">{{ .Name }}</li>
                 {{ else }}
-                <li class="sidebar-item pl1"><a href="{{ .URL }}">{{ .Name }}</a></li>
+                <li class="sidebar-item pl1 no_print"><a href="{{ .URL }}">{{ .Name }}</a></li>
                 {{ end }}
                 {{ end }}
             </ul>
         </nav>
     </amp-sidebar>
     <div id="wrapper">
-        <div id="top-page" ></div>
-    <header class="headerbar fixed flex items-center top-0 left-0 right-0 px2">
-    <p class="logo-wrap mr-auto"><a class="logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
-    <nav role="main-navigation" class="pt3">
-        <ul>
+      <div id="top-page"></div>
+      <header class="headerbar fixed flex items-center top-0 left-0 right-0 px2 no_print">
+    <p class="logo-wrap mr-auto no_print"><a class="logo" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
+    <nav role="main-navigation no_print" class="pt3">
+        <ul class="no_print">
         {{ range sort .Site.Menus.main }}
         {{ if eq .URL $now }}
-        <li class="nav-item current-nav-item">{{ .Name | upper }}</li>
+        <li class="nav-item current-nav-item no_print">{{ .Name | upper }}</li>
         {{ else }}
         <li class="nav-item available-nav-item"><a class="main-menu" href="{{ .URL }}">{{ .Name | upper }}</a></li>
         {{ end }}
         {{ end }}
         </ul>
     </nav>
-    <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="nav-toggle">
-        <amp-img src="/img/svg/light/022-menu.svg" layout="fixed" height="23" width="23"></amp-img>
+    <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="nav-toggle no_print">
+        <amp-img src="/img/svg/light/022-menu.svg" layout="fixed" height="23" width="23" class="no_print"></amp-img>
     </div>
 </header>

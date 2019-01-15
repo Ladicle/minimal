@@ -30,16 +30,16 @@
 <section class="posts-pane">
 <h2 class="title-font"><a href="/post/">Recent Posts</a></h2>
 <div class="item-box">
-  {{ range first 5 (where .Data.Pages.ByDate.Reverse "Section" "post") }}
+  {{ range sort (first 5 (where .Data.Pages.ByDate.Reverse "Section" "post")) ".Date" "asc" }}
   <div class="post-item">
       <div class="post-info p2">
          {{ range .Params.categories }}<a href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . |upper }}</a>{{ end }}
           <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
           <div class="text-info">
           {{ if .Params.tags }}
-              <div class="meta-tags pt2">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
+              <div class="meta-tags">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
           {{ end }}
-         <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
+         <time class="meta-time block" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
          </div>
       </div>
     </div>

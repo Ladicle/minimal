@@ -1,12 +1,12 @@
-<footer class="flex flex-column items-center p3 center">
+<footer class="flex flex-column items-center p3 center no_print">
   <nav class="footer-social-nav list-reset m0">
     <ul class="social-nav-list list-reset mt0 pt0">
         {{ range sort .Site.Menus.social }}
-            <li><a class="link-reset" href="{{ .URL }}">{{ .Name | lower }}</a></li>
+            <li class="no_print"><a class="link-reset" href="{{ .URL }}">{{ .Name | lower }}</a></li>
         {{ end }}
     </ul>
   </nav>
-  <small>{{ .Site.Params.copyright | markdownify }}</small>
+  <small class="no_print">{{ .Site.Params.copyright | markdownify }}</small>
 </footer>
 </div>
 </body>

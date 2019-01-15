@@ -1,7 +1,7 @@
 {{ partial "header" . }}
 <main class="px2 mb3">
 {{ if not .Params.disableMeta }}
-<div class="clearfix post-meta single-post-meta">
+<div class="clearfix post-meta single-post-meta no_print">
   {{ with .Site.Params.authorimage }}<a href="/about/"><amp-img class="circle mr1 left" src="/img/{{ . }}" layout="fixed" height="60" width="60"></amp-img></a>{{ end }}
 
   <span class="block">
@@ -28,17 +28,17 @@
 <div class="article text-left pb3">{{ .Content }}</div>
 </div>
 
-<ul class="list-reset tags flex mb3">
+<ul class="list-reset tags flex mb3 no_print">
     {{ range .Params.categories }}
-    <li><a class="tag" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a></li>
+    <li class="no_print"><a class="tag" href="{{ $.Site.BaseURL }}categories/{{ . | urlize }}">{{ . }}</a></li>
     {{ end }}
     {{ range .Params.tags }}
-    <li><a class="tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a></li>
+    <li class="no_print"><a class="tag" href="{{ $.Site.BaseURL }}tags/{{ . | urlize }}">{{ . }}</a></li>
     {{ end }}
 </ul>
 
 {{ if not .Params.disableShare }}
-<div class="share-buttons clearfix py3 mt1">
+<div class="share-buttons clearfix py3 mt1 no_print">
     <div class="share-icons right p0 m0">
         <ul class="list-reset flex p0 m0">
         <li><amp-img tabindex=0 role="comment-btn" class="social-icon social-comment" src="/img/svg/dark/024-speech-bubble.svg" on="tap:AMP.setState({visible1: !visible1})" layout="fixed" height="23" width="23"></amp-img></li>
@@ -52,24 +52,24 @@
 
 {{- if and .Site.DisqusShortname (and (not .Params.disableComment) (not .Params.disableShare)) }}
 <div [class]="visible1 ? 'box-show' : 'box-hide'" class="box-hide">
-    <amp-iframe class="comments" width=60 height=14
-	              layout="responsive"
-	              sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+    <amp-iframe class="comments m2" width=60 height=14
+	              layout="responsive"	              sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
 	              resizable
-	              src="https://cdn.rawgit.com/Ladicle/amp-iframe/master/disqus_thread.html#{{ .Permalink | htmlEscape }}">
+	              src="{{.Site.Params.disqusThreadURL}}#{{ .Permalink | htmlEscape }}">
         <div overflow tabindex="0" role="button" aria-label="Read more"></div>
         <amp-img placeholder
                  src="/img/white.png"
                  layout="fill">
         </amp-img>
     </amp-iframe>
+    <div class="m1 white">.</div>
 </div>
 {{ end -}}
 
 {{ if not .Params.disableRelated }}
 {{ $related := .Site.RegularPages.Related . | first 3 }}
 {{ with $related }}
-<div class="related-posts">
+<div class="related-posts no_print">
 <h3>READ NEXT...</h3>
 <div class="item-box">
     {{ range . }}
@@ -81,9 +81,9 @@
           <a href="{{ .URL }}"><h2 class="p0 m0">{{ .Title }}</h2></a>
           <div class="text-info">
           {{ if .Params.tags }}
-              <div class="meta-tags pt2">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
+              <div class="meta-tags">{{ $tn := (len .Params.tags) }}This posts is about {{ range $index, $elm := .Params.tags }}<a href="{{ $.Site.BaseURL }}tags/{{ $elm | urlize }}">{{ $elm }}</a>{{ if eq (add $index 2) $tn }} and {{ else }}{{ if eq (add $index 1) $tn }}{{ else -}}, {{ end -}}{{ end -}}{{ end -}}.</div>
           {{ end }}
-         <time class="meta-time block pt1" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
+         <time class="meta-time block" datetime="{{ .Date.Format "2006-01-02T07:00" }}">{{ .Date.Format (.Site.Params.dateFormat | default "Jan 2, 2006") }}. {{ .ReadingTime }} min read</time>
          </div>
       </div>
     </div>
