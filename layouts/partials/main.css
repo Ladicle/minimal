@@ -25,6 +25,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
     background: #fefefe;
     font-size: 98%;
+    z-index: 0;
 }
 
 body {
@@ -1646,7 +1647,8 @@ a.follow-button {
 }
 
 .article a {
-    border-bottom: var(--light-text) solid 1px;
+    text-decoration-line: underline;
+    text-decoration-color: #ccc;
 }
 
 .comment-box {
@@ -1775,6 +1777,10 @@ header.headerbar nav {
     counter-reset: number;
 }
 
+.footnotes ol li:before {
+    margin-top: 4px;
+}
+
 .post-main ul li:before, .post-main ol li:before {
     display: inline-block;
     position: absolute;
@@ -1782,6 +1788,7 @@ header.headerbar nav {
     font-weight: bold;
     margin-left: -1.5em;
     width: 1em;
+    /* color: #bbb; */
 }
 
 .post-main ol li:before {
@@ -1789,7 +1796,11 @@ header.headerbar nav {
 }
 
 .post-main ul li:before {
-    content: '\2022';
+    content: '.';
+    font-weight: bold;
+    font-size: 2em;
+    margin-left: -26px;
+    margin-top: -8px;
 }
 
 .post-main ol li:before {
@@ -1866,7 +1877,6 @@ blockquote {
     border: none;
     border-left: 5px solid #f0f0f0;
     padding: .1em 2rem .2em 2.5rem;
-    /* text-align: center; */
 }
 
 blockquote cite {
@@ -1877,20 +1887,17 @@ blockquote cite {
     top: -20px;
 }
 
-blockquote:before,
-blockquote:after {
+blockquote:before {
     position: absolute;
     color: #f2f2f2;
     font-size: 8rem;
+    font-weight: bold;
     width: 4rem;
     height: 4rem;
-    z-index: -1;
-}
-
-blockquote:before {
     content: '“';
     left: 1rem;
     top: -2.5rem;
+    z-index: -1;
 }
 
 table {
@@ -1990,6 +1997,7 @@ figcaption p {
 
 .ox-hugo-toc a {
     border: none;
+    text-decoration: none;
 }
 
 .post-main .ox-hugo-toc {
@@ -2212,6 +2220,7 @@ h2 code, h1 code, h3 code, h4 code, h5 code, h6 code {
 }
 
 .references a {
+    text-decoration: none;
     border-bottom: none;
     padding-left: 1em;
     display: block;
